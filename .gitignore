@@ -1,2 +1,4 @@
 .env
 apiTest/.env
+apiTest/token.json
+client_secrets.json
