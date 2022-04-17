@@ -3,6 +3,7 @@
   <head> </head>
   <body>
     <h1>Demo</h1>
+    <h3>Format of List :: start date of event : id of event : Name of Event</h3>
     <ul>
       {% for result in results %}
       <li>{{result.start.date}}: {{result.id_event}}: {{result.summary}}</li>

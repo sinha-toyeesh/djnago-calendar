@@ -17,7 +17,8 @@ SCOPES = ['https://www.googleapis.com/auth/calendar.readonly']
 def test_calendar():
 
     flow = InstalledAppFlow.from_client_secrets_file(
-            'client_secrets.json', SCOPES)
+        'client_secrets.json', SCOPES)
+    flow.redirect_uri = 'http://localhost:8080/rest/v1/calendar/init/'
     creds = flow.run_local_server(host='localhost')
 
     try:
@@ -40,10 +41,11 @@ def test_calendar():
             start = event['start'].get('dateTime', event['start'].get('date'))
             id_event = event['id']
             summary_event = event['summary']
-            varTest = {"start": {"date": repr(start)}, "id_event": repr(id_event), "summary":repr(summary_event)}
+            varTest = {"start": {"date": repr(start)}, "id_event": repr(
+                id_event), "summary": repr(summary_event)}
             newTest.append(varTest)
 
     except HttpError as error:
         print('An error occurred: %s' % error)
-    
+
     return newTest
