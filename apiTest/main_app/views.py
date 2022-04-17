@@ -8,7 +8,7 @@ def home(request):
     return render(request, 'home.html')
 
 
-def demo(request):
+def GoogleCalendarInitView(request):
     results = test_calendar()
     context = {"results": results}
     return render(request, 'demo.html', context)
